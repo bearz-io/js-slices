@@ -1,0 +1,155 @@
+{
+  "name": "@bearz/slices",
+  "version": "0.1.0",
+  "homepage": "bearz.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bearz-io/js-slices.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bearz-io/js-slices/discussions"
+  },
+  "module": "./esm/mod.js",
+  "types": "./types/mod.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./types/mod.d.ts",
+        "default": "./esm/mod.js"
+      }
+    },
+    "./camelize": {
+      "import": {
+        "types": "./types/camelize.d.ts",
+        "default": "./esm/camelize.js"
+      }
+    },
+    "./capitalize": {
+      "import": {
+        "types": "./types/capitalize.d.ts",
+        "default": "./esm/capitalize.js"
+      }
+    },
+    "./char-array-builder": {
+      "import": {
+        "types": "./types/char_array_builder.d.ts",
+        "default": "./esm/char_array_builder.js"
+      }
+    },
+    "./char-slice": {
+      "import": {
+        "types": "./types/char_slice.d.ts",
+        "default": "./esm/char_slice.js"
+      }
+    },
+    "./dasherize": {
+      "import": {
+        "types": "./types/dasherize.d.ts",
+        "default": "./esm/dasherize.js"
+      }
+    },
+    "./ends-with": {
+      "import": {
+        "types": "./types/ends_with.d.ts",
+        "default": "./esm/ends_with.js"
+      }
+    },
+    "./equal": {
+      "import": {
+        "types": "./types/equal.d.ts",
+        "default": "./esm/equal.js"
+      }
+    },
+    "./index-of": {
+      "import": {
+        "types": "./types/index_of.d.ts",
+        "default": "./esm/index_of.js"
+      }
+    },
+    "./last-index-of": {
+      "import": {
+        "types": "./types/last_index_of.d.ts",
+        "default": "./esm/last_index_of.js"
+      }
+    },
+    "./ordinalize": {
+      "import": {
+        "types": "./types/ordinalize.d.ts",
+        "default": "./esm/ordinalize.js"
+      }
+    },
+    "./pascalize": {
+      "import": {
+        "types": "./types/pascalize.d.ts",
+        "default": "./esm/pascalize.js"
+      }
+    },
+    "./slice": {
+      "import": {
+        "types": "./types/slice.d.ts",
+        "default": "./esm/slice.js"
+      }
+    },
+    "./starts-with": {
+      "import": {
+        "types": "./types/starts_with.d.ts",
+        "default": "./esm/starts_with.js"
+      }
+    },
+    "./titleize": {
+      "import": {
+        "types": "./types/titleize.d.ts",
+        "default": "./esm/titleize.js"
+      }
+    },
+    "./tokens": {
+      "import": {
+        "types": "./types/tokens.d.ts",
+        "default": "./esm/tokens.js"
+      }
+    },
+    "./trim": {
+      "import": {
+        "types": "./types/trim.d.ts",
+        "default": "./esm/trim.js"
+      }
+    },
+    "./underscore": {
+      "import": {
+        "types": "./types/underscore.d.ts",
+        "default": "./esm/underscore.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./types/utils.d.ts",
+        "default": "./esm/utils.js"
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:bun": "bun test"
+  },
+  "authors": [
+    {
+      "name": "jolt9dev",
+      "email": "dev@jolt9.com"
+    }
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "dependencies": {
+    "@bearz/chars": "^0.1.0"
+  },
+  "devDependencies": {
+    "picocolors": "^1.0.0",
+    "@types/node": "^22.13.4",
+    "@bearz/testing": "^0.0.0",
+    "@bearz/assert": "^0.1.0"
+  },
+  "_generatedBy": "dnt@dev"
+}
