@@ -27,7 +27,19 @@
  * perform case insensitive comparisons over strings or CharSliceLike
  * objects such as CharSlice or Uint32Arrays.
  *
- * ## Basic Usage
+ * ![logo](https://raw.githubusercontent.com/bearz-io/js/refs/heads/main/eng/assets/bearz.io.png)
+ *
+ * [![JSR](https://jsr.io/badges/@bearz/slices)](https://jsr.io/@bearz/slices)
+ * [![npm version](https://badge.fury.io/js/@bearz%2Fslices.svg)](https://badge.fury.io/js/@bearz%2Fslices)
+ * [![GitHub version](https://badge.fury.io/gh/bearz-io%2Fjs-slices.svg)](https://badge.fury.io/gh/bearz-io%2Fjs-slices)
+ *
+ * ## Documentation
+ *
+ * Documentation is available on [jsr.io](https://jsr.io/@bearz/slices/doc)
+ *
+ * A list of other modules can be found at [github.com/bearz-io/js](https://github.com/bearz-io/js)
+ *
+ * ## Usage
  *
  * ```typescript
  * import * from slices from '@bearz/slices'
@@ -45,11 +57,50 @@
  *   .appendUtf8Array(new TextEncoder().encode(": another test"))
  *
  * console.log(sb.toString())
+ *
+ * const slice = new slices.Slice([0, 3, 4], 1);
+ * console.log(slice.at(0)); // 3
+ * console.log(slice.length); // 2
+ *
  * ```
  *
- * ## LICENSE
+ * ## Classes
+ *
+ * - `CharArrayBuilder` - A builder for character arrays.
+ * - `CharSlice` - A slice of characters.
+ * - `ReadOnlySlice` - A readonly slice of characters.
+ * - `Slice` - A slice of an array, which doesn't create a new array but
+ *    acts as a view over the array.
+ * - `ReadOnlySlice - A readonly slice of an array.
+ *
+ * ## Functions
+ *
+ * - `camelize` - converts a word to camel case.
+ * - `capitalize` - capitalizes a word.
+ * - `dasherize` - converts a word to hyphen/dash case.
+ * - `endsWith` - determines if a string or char array ends with characters.
+ * - `endsWithFold` - determines if a string or char array ends with characters using case insensitivity.
+ * - `equalFold` - determines if a string or char array with characeters.
+ * - `equal` -  determines if a string or char array with characters.
+ * - `indexOfFold` - determines the index of a character or char array using case insensitivity.
+ * - `indexOf` - determines the index of of a character or char array.
+ * - `lastIndexOfFolder` - determines the last index of a character or char array using case insensitivity.
+ * - `lastIndex` - determines the last index of a character or char array.
+ * - `ordinalize` - converts word/number to the ordinal case.
+ * - `pascalize` - converts a word to pascal case.
+ * - `startsWith` - determines if a string or char array starts with another char array.
+ * - `startsWithFold` - determines if a string or char array starts with another char array using case insensitivity.
+ * - `titleize` - converts characters into title case.
+ * - `trim` - trims the specified characters from the start and end of a char array.  defaults to whitespace.
+ * - `trimStart` - trims the specified characters from the start of a char array. defaults to whitespace.
+ * - `trimEnd` - trims the specified characters from the end of a char array. defaults to whitespace.
+ * - `toCharArray` - converts a string to in array of characters/runes represented by a number.
+ * - `toString` - converts an array of characters into a string.
+ *
+ * ## License
  *
  * [MIT License](./LICENSE.md)
+ * @module
  */
 export * from "./camelize.ts";
 export * from "./capitalize.ts";

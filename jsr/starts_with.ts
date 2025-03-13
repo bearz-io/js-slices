@@ -1,3 +1,9 @@
+/**
+ * startsWith functions determines if a char buffer starts with the given prefix
+ * and includes a case-insensitive version.
+ * @module
+ */
+
 import { simpleFold } from "@bearz/chars/simple-fold";
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 

@@ -1,3 +1,8 @@
+/**
+ * provides a function to convert a slice to the ordinal case.
+ * @module
+ */
+
 import { isSpace } from "@bearz/chars/is-space";
 import { CharArrayBuilder } from "./char_array_builder.ts";
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";

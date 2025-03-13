@@ -1,3 +1,9 @@
+/**
+ * This module provides functions to compare two arrays of characters
+ * for equality, both case-sensitive and case-insensitive.
+ * It includes the `equal` and `equalFold` functions.
+ * @module
+ */
 import { simpleFold } from "@bearz/chars/simple-fold";
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 

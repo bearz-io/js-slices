@@ -14,7 +14,11 @@ export function indexOfFold(value: CharBuffer, test: CharBuffer, index = 0): num
     const s = toCharSliceLike(value);
     const t = toCharSliceLike(test);
 
-    if (t.length > s.length) {
+    if (index < 0 || (index > 0 && index >= s.length)) {
+        throw new RangeError(`Argument index (${index}) out of range`);
+    }
+
+    if (t.length == 0 || s.length == 0 || t.length > s.length) {
         return -1;
     }
 
@@ -44,7 +48,7 @@ export function indexOfFold(value: CharBuffer, test: CharBuffer, index = 0): num
                     if (tr === sr) {
                         f++;
                         if (f === t.length) {
-                            return i - t.length + 1;
+                            return i + t.length;
                         }
 
                         continue;
@@ -62,7 +66,7 @@ export function indexOfFold(value: CharBuffer, test: CharBuffer, index = 0): num
                             f++;
 
                             if (f == t.length - 1) {
-                                return i + 1 - f;
+                                return i + t.length;
                             }
                             continue;
                         }
@@ -80,7 +84,7 @@ export function indexOfFold(value: CharBuffer, test: CharBuffer, index = 0): num
                         f++;
 
                         if (f == t.length - 1) {
-                            return i + 1 - f;
+                            return i + t.length;
                         }
                         continue;
                     }
@@ -89,7 +93,7 @@ export function indexOfFold(value: CharBuffer, test: CharBuffer, index = 0): num
                 }
 
                 if (f == t.length - 1) {
-                    return i + 1 - f;
+                    return i + t.length;
                 }
 
                 return -1;
@@ -144,7 +148,7 @@ export function indexOf(value: CharBuffer, test: CharBuffer, index = 0): number 
     const s = toCharSliceLike(value);
     const t = toCharSliceLike(test);
 
-    if (t.length > s.length) {
+    if (t.length == 0 || s.length == 0 || t.length > s.length) {
         return -1;
     }
 

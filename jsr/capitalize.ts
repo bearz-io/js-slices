@@ -1,3 +1,11 @@
+/**
+ * This module provides a function to capitalize the first character of a string.
+ * The capitalize function converts the first character of a string to uppercase
+ * and the rest to lowercase by default. It can also preserve the case of the
+ * characters that are not the first character if specified in the options.
+ * @module
+ */
+
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 import { toLower } from "@bearz/chars/to-lower";
 import { toUpper } from "@bearz/chars/to-upper";

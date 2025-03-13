@@ -67,6 +67,9 @@ export class ReadOnlyCharSlice implements CharSequence, Iterable<number> {
         return new ReadOnlyCharSlice(buffer);
     }
 
+    /**
+     * @returns An iterator that iterates over the elements of the slice.
+     */
     [Symbol.iterator](): Iterator<number> {
         let index = 0;
         const set = this.#buffer;
@@ -314,7 +317,7 @@ export class ReadOnlyCharSlice implements CharSequence, Iterable<number> {
 
         let i = 0;
         for (let j = this.#start; j < this.#end; j++) {
-            buffer[i++] = toLower(this.#buffer[j]);
+            buffer[i++] = toUpper(this.#buffer[j]);
         }
 
         return new ReadOnlyCharSlice(buffer);
@@ -382,9 +385,13 @@ export class ReadOnlyCharSlice implements CharSequence, Iterable<number> {
      * @param t The character slice to remove.
      * @returns The new `ReadOnlyCharSlice` with the leading character removed.
      */
-    trimStart(t?: CharSliceLike): ReadOnlyCharSlice {
+    trimStart(t?: CharSliceLike | string): ReadOnlyCharSlice {
         if (t === undefined) {
             return this.trimStartSpace();
+        }
+
+        if (typeof t === "string") {
+            t = toCharSliceLike(t);
         }
 
         if (t.length === 1) {
@@ -456,19 +463,23 @@ export class ReadOnlyCharSlice implements CharSequence, Iterable<number> {
     /**
      * Creates a new ReadOnlyCharSlice that is the result of trimming the
      * end of this ReadOnlyCharSlice by a character or a slice of characters.
-     * @param sliceLike
+     * @param slice
      * @returns A new ReadOnlyCharSlice.
      */
-    trimEnd(sliceLike?: CharSliceLike): ReadOnlyCharSlice {
-        if (sliceLike === undefined) {
+    trimEnd(slice?: CharSliceLike | string): ReadOnlyCharSlice {
+        if (slice === undefined) {
             return this.trimEndSpace();
         }
 
-        if (sliceLike.length === 1) {
-            return this.trimEndChar(sliceLike.at(0) ?? -1);
+        if (typeof slice === "string") {
+            slice = toCharSliceLike(slice);
         }
 
-        return this.trimEndSlice(sliceLike);
+        if (slice.length === 1) {
+            return this.trimEndChar(slice.at(0) ?? -1);
+        }
+
+        return this.trimEndSlice(slice);
     }
 
     /**
@@ -559,9 +570,13 @@ export class ReadOnlyCharSlice implements CharSequence, Iterable<number> {
      * @param slice The slice of characters to trim.
      * @returns A new ReadOnlyCharSlice.
      */
-    trim(slice?: CharSliceLike): ReadOnlyCharSlice {
+    trim(slice?: CharSliceLike | string): ReadOnlyCharSlice {
         if (slice === undefined) {
             return this.trimSpace();
+        }
+
+        if (typeof slice === "string") {
+            slice = toCharSliceLike(slice);
         }
 
         if (slice.length === 1) {
@@ -799,11 +814,11 @@ export class CharSlice implements CharSequence, Iterable<number> {
         return indexOfFold(this, value, index);
     }
 
-    lastIndexOf(value: CharBuffer, index = 0): number {
+    lastIndexOf(value: CharBuffer, index = Infinity): number {
         return lastIndexOf(this, value, index);
     }
 
-    lastIndexOfFold(value: CharBuffer, index = 0): number {
+    lastIndexOfFold(value: CharBuffer, index = Infinity): number {
         return lastIndexOfFold(this, value, index);
     }
 

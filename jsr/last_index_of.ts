@@ -1,3 +1,10 @@
+/**
+ * The `lastIndexOf` module provides functions to find the last index of a
+ * substring in a string or character buffer, with support for case-insensitive
+ * searching.
+ * @module
+ */
+
 import { simpleFold } from "@bearz/chars/simple-fold";
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 
@@ -14,7 +21,7 @@ export function lastIndexOfFold(value: CharBuffer, test: CharBuffer, index = 0):
     const s = toCharSliceLike(value);
     const t = toCharSliceLike(test);
 
-    if (t.length > s.length) {
+    if (t.length === 0 || s.length === 0 || t.length > s.length) {
         return -1;
     }
 
@@ -102,7 +109,7 @@ export function lastIndexOf(value: CharBuffer, test: CharBuffer, index = Infinit
     const s = toCharSliceLike(value);
     const t = toCharSliceLike(test);
 
-    if (t.length > s.length) {
+    if (t.length === 0 || s.length === 0 || t.length > s.length) {
         return -1;
     }
 
@@ -131,7 +138,6 @@ export function lastIndexOf(value: CharBuffer, test: CharBuffer, index = Infinit
             }
 
             f = 0;
-            break;
         }
 
         if (f === t.length) {

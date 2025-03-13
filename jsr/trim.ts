@@ -1,3 +1,10 @@
+/**
+ * trim functions that remove whitespace or characters from the start,
+ * end, or both ends of a character buffer.
+ *
+ * @module
+ */
+
 import { isSpace } from "@bearz/chars/is-space";
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 

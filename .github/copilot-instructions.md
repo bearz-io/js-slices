@@ -1,8 +1,37 @@
 
 ## Tests
 
-When writing tests import test from "node:test"
+When writing tests do the following
 
+Use test from @bearz/testing.
+
+```ts
+import { test } from "@bearz/testing";
+```
+
+Use asserts methods as needed from @bearz/asserts
+such as but not limited to, `ok`, `nope`, `equal`,
+`throws`, `rejects`, etc.
+
+```ts
+import { equal, ok, throws } from "@bearz/assert";
+```
+
+Prefix the test name with the module name without
+the scope and then function, class, const and
+context. For example
+
+```ts
+import { test } from "@bearz/testing";
+import { equal } from "@bearz/assert";
+import { Slice } from "./slice.ts";
+
+test("slices::Slice.length gets the length of the slice",  ()  => {
+   const s = new Slice([0, 1, 2], 1);
+   equal(2, s.length);
+})
+
+```
 
 ## Documentation
 

@@ -1,3 +1,9 @@
+/**
+ * underscore functions converts a string to the underscore case.
+ *
+ * @module
+ */
+
 import { CharArrayBuilder } from "./char_array_builder.ts";
 import { CHAR_HYPHEN_MINUS, CHAR_UNDERSCORE } from "@bearz/chars/constants";
 import { isDigit, isLetter, isLower, isSpace, isUpper, toLower, toUpper } from "@bearz/chars";

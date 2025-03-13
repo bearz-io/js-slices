@@ -1,4 +1,4 @@
-import { WINDOWS } from "@bearz/runtime-info/os";
+import { WINDOWS } from "./globals.ts";
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 import { toCharArray } from "./utils.ts";
 

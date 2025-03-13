@@ -1,4 +1,15 @@
 /**
+ * The Slice module includes the Slice class which provides
+ * a mutable view of an array.  The Slice class allows you to
+ * create a slice of an array, modify the elements in the slice,
+ * and iterate over the elements in the slice without copying the array.
+ *
+ * The readonly slice class provides a read-only view of the array.
+ * where you can view the elements in the slice but not modify them.
+ * @module
+ */
+
+/**
  * A slice of an array.  The slice is a view of the array
  * and the array is not copied.
  *
@@ -18,13 +29,17 @@ export class Slice<T> implements Iterable<T> {
      */
     constructor(set: Array<T>, offset = 0, length?: number) {
         this.#set = set;
-        if (offset < 0 || offset >= set.length) {
-            throw new RangeError("Argument 'offset' must be greater than or equal to 0.");
+        if (offset < 0 || (offset !== 0 && offset >= set.length)) {
+            throw new RangeError(
+                `Argument 'offset' (${offset}) must be greater than or equal to 0.`,
+            );
         }
 
         length = length ?? set.length - offset;
         if (length < 0 || offset + length > set.length) {
-            throw new RangeError("Argument 'length' must be greater than or equal to 0.");
+            throw new RangeError(
+                `Argument 'length' (${length}) must be greater than or equal to 0.`,
+            );
         }
 
         this.#offset = offset;

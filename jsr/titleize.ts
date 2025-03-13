@@ -1,3 +1,8 @@
+/**
+ * titleize function that converts a string to title case.
+ * @module
+ */
+
 import { CHAR_SPACE, CHAR_UNDERSCORE } from "@bearz/chars/constants";
 import { isLetter } from "@bearz/chars/is-letter";
 import { isLetterOrDigit } from "@bearz/chars/is-letter-or-digit";

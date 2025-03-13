@@ -8,13 +8,28 @@ export async function deleteShim(path: string) {
 }
 
 export async function replaceGlobalsFile(path: string) {
-    const content = `export const globals = globalThis;`;
+    const content = `
+const globals = globalThis;
+
+let win = false;
+
+if (globals.Deno && globals.Deno.build && globals.Deno.build.os === "windows") {
+    win = true;
+} else if (globals.process && globals.process.platform === "win32") {
+    win = true;
+} else if (globals.navigator && globals.navigator.userAgent) {
+    win = globals.navigator.userAgent.includes("Windows");
+}
+
+export const WINDOWS = win;
+
+`;
 
     await Deno.writeTextFile(path, content);
 }
 
 export async function replaceGlobalsTypeFile(path: string) {
-    const content = `export declare const globals: typeof globalThis & Record<string, any>;`;
+    const content = `export declare const WINDOWS: boolean;`;
 
     await Deno.writeTextFile(path, content);
 }

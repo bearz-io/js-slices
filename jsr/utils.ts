@@ -1,4 +1,10 @@
 /**
+ * Utiltity functions for working with character buffers.
+ *
+ * @module
+ */
+
+/**
  * A contract for a type that can be used as a slice of characters.
  */
 export interface CharSliceLike {

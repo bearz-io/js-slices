@@ -1,3 +1,13 @@
+/**
+ * This module provides a function to convert a string to dasherized case.
+ * Dasherized case is a form of kebab case where words are separated by hyphens
+ * and all characters are lowercased.
+ *
+ * Dasherize is primarily used for converting camel case or pascal case strings
+ * to a more readable format.
+ * @module
+ */
+
 import { CharArrayBuilder } from "./char_array_builder.ts";
 import { CHAR_HYPHEN_MINUS, CHAR_UNDERSCORE } from "@bearz/chars/constants";
 import { isDigit } from "@bearz/chars/is-digit";

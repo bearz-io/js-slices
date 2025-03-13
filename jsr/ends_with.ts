@@ -1,3 +1,12 @@
+/**
+ * This module provides functions for determining if an array of characters
+ * ends with a given set of characters, both case-sensitive and
+ * case-insensitive. It includes the `endsWith` and `endsWithFold` functions.
+ * The `endsWith` function checks if the array ends with the given characters
+ * using a case-sensitive comparison, while the `endsWithFold` function
+ * performs a case-insensitive comparison.
+ * @module
+ */
 import { type CharBuffer, toCharSliceLike } from "./utils.ts";
 import { simpleFold } from "@bearz/chars/simple-fold";
 

@@ -1,3 +1,10 @@
+/**
+ * This module provides functions for manipulating strings and
+ * character buffers, including converting strings to camel case.
+ *
+ * @module
+ */
+
 import { CharArrayBuilder } from "./char_array_builder.ts";
 import { CHAR_HYPHEN_MINUS, CHAR_UNDERSCORE } from "@bearz/chars/constants";
 import { isDigit } from "@bearz/chars/is-digit";
