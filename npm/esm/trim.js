@@ -24,7 +24,7 @@ export function trimEndSpace(buffer) {
     }
     const buffer2 = new Uint32Array(size);
     if (s instanceof Uint32Array) {
-        buffer2.set(s);
+        buffer2.set(s.subarray(0, size));
         return buffer2;
     }
     for (let i = 0; i < size; i++) {
@@ -51,11 +51,10 @@ export function trimEndChar(buffer, suffix) {
     if (size === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(size);
     if (s instanceof Uint32Array) {
-        buffer2.set(s);
-        return buffer2;
+        return s.subarray(0, size);
     }
+    const buffer2 = new Uint32Array(size);
     for (let i = 0; i < size; i++) {
         buffer2[i] = s.at(i) ?? 0;
     }
@@ -87,11 +86,10 @@ export function trimEndSlice(buffer, suffix) {
     if (size === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(size);
     if (s instanceof Uint32Array) {
-        buffer2.set(s);
-        return buffer2;
+        return s.subarray(0, size);
     }
+    const buffer2 = new Uint32Array(size);
     for (let i = 0; i < size; i++) {
         buffer2[i] = s.at(i) ?? 0;
     }
@@ -134,11 +132,10 @@ export function trimStartSpace(buffer) {
         return s;
     }
     const offset = s.length - size;
-    const buffer2 = new Uint32Array(size);
     if (s instanceof Uint32Array) {
-        buffer2.set(s.slice(offset));
-        return buffer2;
+        return s.subarray(offset);
     }
+    const buffer2 = new Uint32Array(size);
     for (let i = 0; i < size; i++) {
         buffer2[i] = s.at(offset + i) ?? 0;
     }
@@ -156,9 +153,11 @@ export function trimStartChar(buffer, prefix) {
     }
     const s = toCharSliceLike(buffer);
     let size = s.length;
+    let start = 0;
     for (let i = 0; i < s.length; i++) {
         if (s.at(i) === prefix) {
             size--;
+            start++;
         } else {
             break;
         }
@@ -166,13 +165,12 @@ export function trimStartChar(buffer, prefix) {
     if (size === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(size);
     if (s instanceof Uint32Array) {
-        buffer2.set(s);
-        return buffer2;
+        return s.subarray(start);
     }
-    for (let i = 0; i < size; i++) {
-        buffer2[i] = s.at(i) ?? 0;
+    const buffer2 = new Uint32Array(size);
+    for (let j = start, i = 0; j < s.length; j++, i++) {
+        buffer2[i] = s.at(j) ?? 0;
     }
     return buffer2;
 }
@@ -204,11 +202,10 @@ export function trimStartSlice(buffer, prefix) {
     if (size === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(size);
     if (s instanceof Uint32Array) {
-        buffer2.set(s.slice(j));
-        return buffer2;
+        return s.subarray(j);
     }
+    const buffer2 = new Uint32Array(size);
     for (let i = 0; i < size; i++) {
         buffer2[i] = s.at(i + j) ?? 0;
     }
@@ -261,11 +258,10 @@ export function trimSpace(buffer) {
     if (start === 0 && end === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(end - start);
     if (s instanceof Uint32Array) {
-        buffer2.set(s.subarray(start, end));
-        return buffer2;
+        return s.subarray(start, end);
     }
+    const buffer2 = new Uint32Array(end - start);
     for (let i = start; i < end; i++) {
         buffer2[i - start] = s.at(i) ?? 0;
     }
@@ -304,11 +300,10 @@ export function trimChar(buffer, prefix) {
     if (start === 0 && end === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(end - start);
     if (s instanceof Uint32Array) {
-        buffer2.set(s.subarray(start, end));
-        return buffer2;
+        return s.subarray(start, end);
     }
+    const buffer2 = new Uint32Array(end - start);
     for (let i = start; i < end; i++) {
         buffer2[i - start] = s.at(i) ?? 0;
     }
@@ -357,11 +352,10 @@ export function trimSlice(buffer, chars) {
     if (start === 0 && end === s.length && s instanceof Uint32Array) {
         return s;
     }
-    const buffer2 = new Uint32Array(end - start);
     if (s instanceof Uint32Array) {
-        buffer2.set(s.subarray(start, end));
-        return buffer2;
+        return s.subarray(start, end);
     }
+    const buffer2 = new Uint32Array(end - start);
     for (let i = start; i < end; i++) {
         buffer2[i - start] = s.at(i) ?? 0;
     }
