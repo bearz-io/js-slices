@@ -1,6 +1,15 @@
 {
   "name": "@bearz/slices",
   "version": "0.1.0",
+  "description": "Cross runtime module for slices and char slices which creates views over arrays without allocating  a new array.  Char slices is useful for transforming text without allocating a new string for every change.",
+  "keywords": [
+    "slices",
+    "arrays",
+    "char-arrays",
+    "characters",
+    "case-insensitive",
+    "string"
+  ],
   "homepage": "bearz.io",
   "repository": {
     "type": "git",
